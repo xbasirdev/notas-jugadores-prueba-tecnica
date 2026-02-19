@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if (auth()->check()) {
+        return redirect()->route('dashboard');
+    }
+
+    return redirect()->route('login');
 });
+
+// Auth
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Admin user management
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+    Route::resource('users', UserController::class)->except(['show']);
+});
+
+// Dashboard route for logged users
+Route::middleware('auth')->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
