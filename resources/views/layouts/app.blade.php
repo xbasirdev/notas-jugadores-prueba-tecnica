@@ -31,7 +31,7 @@
     <div class="container">
         <header class="site">
             <div class="brand">
-                <div class="logo">NJ</div>
+                <div class="logo">XB</div>
                 <div>
                     <div style="font-weight:700">Notas Jugadores</div>
                     <div class="muted" style="font-size:13px">Elaborado por: Xavier Basir</div>
@@ -40,7 +40,7 @@
             <div class="nav-actions">
                 @auth
                     <div class="muted">{{ auth()->user()->name }}</div>
-                    <form method="POST" action="{{ route('logout') }}">@csrf<button class="btn ghost" type="submit">cerrar sesión</button></form>
+                    <form method="POST" action="{{ route('logout') }}">@csrf<button class="btn ghost" type="submit">Cerrar sesión</button></form>
                 @endauth
             </div>
         </header>
