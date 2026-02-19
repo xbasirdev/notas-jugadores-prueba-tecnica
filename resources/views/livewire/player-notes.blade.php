@@ -29,7 +29,7 @@
     @can('create', \App\Models\PlayerNote::class)
     <form wire:submit.prevent="addNote" style="margin-top:16px">
         <div>
-            <textarea wire:model.defer="content" maxlength="1000" rows="4" style="width:100%" placeholder="Write an internal note..."></textarea>
+            <textarea wire:model.defer="content" maxlength="200" rows="4" style="width:100%" placeholder="Write an internal note..."></textarea>
             @error('content') <div style="color:#c00">{{ $message }}</div> @enderror
         </div>
         <div style="margin-top:8px">

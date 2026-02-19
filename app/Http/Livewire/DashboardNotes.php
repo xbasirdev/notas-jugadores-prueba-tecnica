@@ -17,7 +17,7 @@ class DashboardNotes extends Component
     protected $listeners = ['noteAdded' => 'loadNotes'];
 
     protected array $rules = [
-        'content' => 'required|string|max:1000',
+        'content' => 'required|string|max:200',
         'player_id' => 'required|integer',
     ];
 

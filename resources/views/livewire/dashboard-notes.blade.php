@@ -35,6 +35,9 @@
                     <select wire:model="player_id" id="player">
                         <option value="">Seleccionar Jugador</option>
                         @foreach($players as $p)
+                            @if($p->id === auth()->id())
+                                @continue
+                            @endif
                             <option value="{{ $p->id }}">{{ $p->name }} ({{ $p->email }})</option>
                         @endforeach
                     </select>
@@ -42,7 +45,7 @@
                 </div>
                 <div style="margin-bottom:8px">
                     <label class="muted">Nota</label>
-                    <textarea wire:model.defer="content" rows="4" placeholder="Escribir nota..."></textarea>
+                    <textarea wire:model.defer="content" maxlength="200" rows="4" placeholder="Escribir nota..."></textarea>
                     @error('content') <div style="color:#c00">{{ $message }}</div> @enderror
                 </div>
                 <div style="display:flex;gap:8px;justify-content:flex-end">

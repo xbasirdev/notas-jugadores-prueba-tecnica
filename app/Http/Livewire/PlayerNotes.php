@@ -14,7 +14,7 @@ class PlayerNotes extends Component
     public string $content = '';
 
     protected array $rules = [
-        'content' => 'required|string|max:1000',
+        'content' => 'required|string|max:200',
     ];
 
     public function mount(User $player): void
