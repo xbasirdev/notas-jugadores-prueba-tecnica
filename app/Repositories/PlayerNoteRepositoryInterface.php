@@ -14,4 +14,8 @@ interface PlayerNoteRepositoryInterface
     public function all(): Collection;
 
     public function createForPlayer(int $playerId, int $authorId, string $content): PlayerNote;
+
+    public function forPlayerPaginated(int $playerId, int $perPage = 10);
+
+    public function allPaginated(int $perPage = 10);
 }

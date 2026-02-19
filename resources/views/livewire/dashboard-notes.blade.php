@@ -26,6 +26,10 @@
     </table>
     </div>
 
+    <div style="margin-top:8px">
+        {{ $notes->links('vendor.pagination.custom') }}
+    </div>
+
     @can('create', \App\Models\PlayerNote::class)
         <div style="margin-top:16px">
             <h3 style="margin-bottom:8px">Crear nota</h3>

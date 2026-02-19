@@ -22,6 +22,21 @@ class EloquentPlayerNoteRepository implements PlayerNoteRepositoryInterface
             ->get();
     }
 
+    public function forPlayerPaginated(int $playerId, int $perPage = 10)
+    {
+        return PlayerNote::with('author')
+            ->where('player_id', $playerId)
+            ->orderByDesc('created_at')
+            ->paginate($perPage);
+    }
+
+    public function allPaginated(int $perPage = 10)
+    {
+        return PlayerNote::with(['author','player'])
+            ->orderByDesc('created_at')
+            ->paginate($perPage);
+    }
+
     public function create(array $data): PlayerNote
     {
         return PlayerNote::create($data);
